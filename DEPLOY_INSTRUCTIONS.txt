@@ -1,0 +1,36 @@
+# Citizen Assist — fixed Netlify package
+
+IMPORTANT:
+Upload/deploy the CONTENTS of this folder as the site root (the ZIP is already flattened).
+The root must contain:
+- index.html
+- app.js
+- styles.css
+- netlify.toml
+- netlify/functions/chatbot.js
+- data/services.js
+
+In Netlify, set the environment variable:
+GEMINI_API_KEY = your Gemini API key
+Do not put the key in app.js or chatbot.js.
+
+After deploying, check Netlify -> Functions for `chatbot`.
+The chatbot endpoint is:
+`/.netlify/functions/chatbot`
+
+
+NEW: Gemini smart search
+------------------------
+The main service search bar now calls:
+  /.netlify/functions/search
+
+The chatbot calls:
+  /.netlify/functions/chatbot
+
+Both functions use the same private Netlify environment variable:
+  GEMINI_API_KEY
+
+Do NOT paste the Gemini key into app.js, index.html, data/services.js, or GitHub.
+After adding/changing the key in Netlify, redeploy the site.
+
+If Gemini search is temporarily unavailable, the website automatically falls back to its existing local search.
